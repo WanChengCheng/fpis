@@ -44,4 +44,6 @@ object Ch2 {
 
     loop(n, 0, 1);
   }
+
+  // currify
 }
