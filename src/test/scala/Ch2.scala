@@ -22,5 +22,32 @@ class Ch2 extends WordSpecLike with Matchers {
         }
       }
     }
+    "isSorted" should {
+      "return true with empty Array" in {
+        Ch2.isSorted(Array[Int](), (x: Int, y: Int) => x > y) shouldBe true
+      }
+      "Array(1, 2, 3) is ordered" in {
+        Ch2.isSorted[Int](Array[Int](1, 2, 3), (x, y) => x < y) shouldBe true
+      }
+      "Array(1, 3, 2) is not ordered" in {
+        Ch2.isSorted[Int](Array(1, 3, 2), (x, y) => x < y) shouldBe false
+      }
+    }
+
+    "currying" should {
+      "return the same result" which {
+        "does not change result of the meaning of the function" in {
+          def fn(x: Int, y: Int) = x + y;
+          Ch2.curry(fn)(1)(2) shouldBe fn(1, 2)
+        }
+      }
+    }
+
+    "uncurry" should {
+      "return the same result" in {
+        def fn(x: Int)(y: Int) = x + y;
+        Ch2.uncurry(fn)(1, 2) shouldBe fn(1)(2)
+      }
+    }
   }
 }
