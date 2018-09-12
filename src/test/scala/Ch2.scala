@@ -49,5 +49,13 @@ class Ch2 extends WordSpecLike with Matchers {
         Ch2.uncurry(fn)(1, 2) shouldBe fn(1)(2)
       }
     }
+    "compose" should {
+      "compose f and g" in {
+        def f(x: Int): String = x toString;
+        def g(s: String): Int = s.length;
+        def cfg = Ch2.compose(g, f);
+        cfg(1) shouldBe 1
+      }
+    }
   }
 }

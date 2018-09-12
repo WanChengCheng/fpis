@@ -70,4 +70,9 @@ object Ch2 {
   def uncurry[A, B, C](f: A => B => C): (A, B) => C = {
     return (x: A, y: B) => f(x)(y);
   }
+
+  // 2.5 compose
+  def compose[A, B, C](f: B => C, g: A => B): A => C = {
+    return (x: A) => f(g(x));
+  }
 }
