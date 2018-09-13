@@ -19,5 +19,10 @@ class Ch3 extends WordSpecLike with Matchers {
         Ch3.drop(Cons(1, Cons(2, Cons(3, Cons(4, Nil)))), 2) shouldBe Cons(3, Cons(4, Nil))
       }
     }
+    "dropWhile" should {
+      "remove elements that match the given condition" in {
+        Ch3.dropWhile[Int](Cons(1, Cons(2, Cons(3, Cons(4, Nil)))), _ < 3) shouldBe Cons(3, Cons(4, Nil))
+      }
+    }
   }
 }

@@ -36,6 +36,9 @@ object Ch3 {
 
   // 3.4 dropWhile
   def dropWhile[A](l: List[A], condition: A => Boolean): List[A] = {
-    
+    l match {
+      case Cons(x, y) if condition(x) => dropWhile(y, condition)
+      case _ => l
+    }
   }
 }
